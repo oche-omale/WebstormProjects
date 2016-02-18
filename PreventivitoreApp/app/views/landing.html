@@ -1,0 +1,82 @@
+<div class="container">
+
+  <div class="bs-docs-section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-header">
+          <h1 id="forms">Questionario</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="well bs-component">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend><span class="help-block">Kindly supply the details below. Fields marked with (*) are mandatory</span></legend>
+              <div class="form-group">
+                <label for="numeroCariche" class="col-lg-3 control-label">Numero Cariche *</label>
+                <div class="col-lg-9">
+                  <select class="form-control" id="numeroCariche" ng-model="numeroCariche" ng-options="nc.v for nc in numeroCariches">
+                    <option value="">Select Numero Cariche</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="massimale" class="col-lg-3 control-label">Massimale *</label>
+                <div class="col-lg-9">
+                  <select class="form-control" id="massimale" ng-model="massimale" ng-options="m.v for m in massimale">
+                    <option value="">Select Massimale</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group" ng-repeat="r in enteCariche">
+                <label for="enteCariche" class="col-lg-3 control-label">{{r.idVariabile}} *</label>
+                <div class="col-lg-9">
+                  <select class="form-control" id="enteCariche" ng-model="enteCariche" ng-options="d for d in r.tipoVariabile.values">
+                    <option value="">Select {{r.idVariabile}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Sinistri Pregressi *</label>
+                <div class="col-lg-9">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="sinistriPregressi" id="sinistriPregressi1" value="1" ng-model="sinistriPregressi">
+                      Si
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="sinistriPregressi" id="sinistriPregressi2" value="0" checked="true" ng-model="sinistriPregressi">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dataDecorrenza" class="col-lg-3 control-label">Data Decorrenza *</label>
+                <div class="col-lg-9">
+                  <select class="form-control" id="dataDecorrenza" ng-model="dataDecorrenza" ng-options="d.v for d in dataDecorrenza">
+                    <option value="">Select Data Decorrenza</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-9 col-lg-offset-3">
+                  <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+                <pre>{{bValue | json}}</pre>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /.container -->
