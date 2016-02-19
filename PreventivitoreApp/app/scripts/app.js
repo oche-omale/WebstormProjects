@@ -8,6 +8,8 @@
  *
  * Main module of the application.
  */
+(function() {
+
 angular
   .module('preventivitoreApp', [
     'ngAnimate',
@@ -15,7 +17,9 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ng',
+    'dynamic-form'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -46,6 +50,14 @@ $stateProvider
     templateUrl: 'views/landing.html',
     controller: 'LandingCtrl',
     controllerAs: 'landing'
+  })
+  .state('dynamic', {
+    url: '/dynamic-form',
+    templateUrl: 'views/dynamic-form.html',
+    controller: 'ExampleCtrl',
+    controllerAs: 'example'
   });
 
   });
+
+}());

@@ -8,7 +8,7 @@
   function QuestionarioService($http) {
 
     var getQuestionarioParameters = function() {
-      return $http.get('http://192.168.190.70:8085/AceRate-Rest-Services/webresources/services/getDizionarioDati/RCPATDIP/1455796639071').then(function(response) {
+      return $http.get('http://192.168.190.70:8085/AceRate-Rest-Services/webresources/services/getDizionarioDati/RCPATDIP/1455871541523').then(function(response) {
         //console.log(JSON.stringify(response));
         return response.data;
       });
