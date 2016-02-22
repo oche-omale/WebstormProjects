@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'ui.router',
     'ng',
-    'dynamic-form'
+    'dynamic-form',
+    'dynform'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -56,6 +57,12 @@ $stateProvider
     templateUrl: 'views/dynamic-form.html',
     controller: 'ExampleCtrl',
     controllerAs: 'example'
+  })
+  .state('dynamicforms', {
+    url: '/dynamic-forms',
+    templateUrl: 'views/dynamic-forms.html',
+    controller: 'AppCtrl',
+    controllerAs: 'app'
   });
 
   });

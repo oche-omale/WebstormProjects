@@ -295,7 +295,10 @@
   }
 
   function getNestedChildrenzz(arr, head) {
+<<<<<<< HEAD
     //console.log('arr: ' + arr);
+=======
+>>>>>>> origin/master
     var out = [];
     var j = 0;
     //var arrs = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'enteCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA','tipoVariabile':{'tipologia':'COMPLESSO','listaVariabili':[{'idVariabile':'carica','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['A','B','C','D','E','F','G','H'],'descr':['Dirigenti Tecnici/Dirigenti Legali iscritti allalbo speciale/Alte professionalit /collaudatore tecnico-amministrativo/commissario ad acta','Organo di vertice/Commissario straordinario/Amministratore Unico/Prefetto','Posizioni organizzative Tecniche/Rup tecnici/altri dipendenti tecnici e collaboratori tecnici in genere/Direttore Esecuzione Contratto','Altri organi/Tesoriere','Dirigenti Amministrativi/Attivit  specifiche/Rup non tecnico/Membri dellEsercito e Forze Armate/Componente Nucleo di Valutazione/Membri Organismo di vigilanza/componente Organismo Indipendente di Valutazione','Altri Amministratori/Assessori/Membri CdA','Posizioni Organizzative Amministrative e altri dipendenti amministrativi/Educatore/Coordinatore Serv.Personale','Componenti di altri organi collegiali e altre specifiche professionalitÃ ']},'help':null,'classeVariabile':null},{'idVariabile':'ente','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'],'descr':['Comuni/Unioni di Comuni/Associazioni di Comuni/ComunitÃ  montane','Province/CittÃ  metropolitane','Regioni','Ospedali/Case di ri/poso/Fondazioni ospedaliere','ASL/ASP_Azienda Sanitaria Provinciale/ARPA/IPAB','Camere di Commercio','AutoritÃ  Garante','Ministeri/Agenzia delle Entrate/Tribunale/Monopoli di Stato/Genio Civile/Forze Armate/Esercito/Marina Militare/Aifa/Miur/CRI/Cndcec/Anci/Inps/Inail/Altre Amministrazioni Statali','UniversitÃ /Istituti scolastici pubblici e scuole pubbliche in genere/ADISU','Porti AutoritÃ  Portuali','ASP-Azienda servizi alla persona/ATER/ALER/ATC/ACER','Consorzi Vari/Magistrato Acque/Parchi','AATO','Enti Strumentali (enti dotati e non dotati di personalitÃ  giuridica)/Farmacie/Aziende Speciali/AFOL','Organismi di Diritto Pubblico e SocietÃ  a partecipazione pubblica','Organismi di Diritto Pubblico e SocietÃ  a Partecipazione pubblica']},'help':null,'classeVariabile':null}]}},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
@@ -362,6 +365,7 @@
     }
   }
 
+<<<<<<< HEAD
   function ProductListCtrl($scope){
     $scope.data = {
       repeatSelect: null,
@@ -501,6 +505,19 @@
     }
 
     function formInputProductDetails(data, products) {
+=======
+  function FormController($scope) {
+
+    reprocessedJSON = [];
+    $scope.model = {};
+
+    console.log('FormController');
+
+    var dat = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'enteCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA','tipoVariabile':{'tipologia':'COMPLESSO','listaVariabili':[{'idVariabile':'carica','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['A','B','C','D','E','F','G','H'],'descr':['Dirigenti Tecnici/Dirigenti Legali iscritti allalbo speciale/Alte professionalit /collaudatore tecnico-amministrativo/commissario ad acta','Organo di vertice/Commissario straordinario/Amministratore Unico/Prefetto','Posizioni organizzative Tecniche/Rup tecnici/altri dipendenti tecnici e collaboratori tecnici in genere/Direttore Esecuzione Contratto','Altri organi/Tesoriere','Dirigenti Amministrativi/Attivit  specifiche/Rup non tecnico/Membri dellEsercito e Forze Armate/Componente Nucleo di Valutazione/Membri Organismo di vigilanza/componente Organismo Indipendente di Valutazione','Altri Amministratori/Assessori/Membri CdA','Posizioni Organizzative Amministrative e altri dipendenti amministrativi/Educatore/Coordinatore Serv.Personale','Componenti di altri organi collegiali e altre specifiche professionalitÃ ']},'help':null,'classeVariabile':null},{'idVariabile':'ente','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'],'descr':['Comuni/Unioni di Comuni/Associazioni di Comuni/ComunitÃ  montane','Province/CittÃ  metropolitane','Regioni','Ospedali/Case di ri/poso/Fondazioni ospedaliere','ASL/ASP_Azienda Sanitaria Provinciale/ARPA/IPAB','Camere di Commercio','AutoritÃ  Garante','Ministeri/Agenzia delle Entrate/Tribunale/Monopoli di Stato/Genio Civile/Forze Armate/Esercito/Marina Militare/Aifa/Miur/CRI/Cndcec/Anci/Inps/Inail/Altre Amministrazioni Statali','UniversitÃ /Istituti scolastici pubblici e scuole pubbliche in genere/ADISU','Porti AutoritÃ  Portuali','ASP-Azienda servizi alla persona/ATER/ALER/ATC/ACER','Consorzi Vari/Magistrato Acque/Parchi','AATO','Enti Strumentali (enti dotati e non dotati di personalitÃ  giuridica)/Farmacie/Aziende Speciali/AFOL','Organismi di Diritto Pubblico e SocietÃ  a partecipazione pubblica','Organismi di Diritto Pubblico e SocietÃ  a Partecipazione pubblica']},'help':null,'classeVariabile':null}]}},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
+    //var dat = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
+    getNestedChildrenzz(dat, null);
+    function formInputSchema(data) {
+>>>>>>> origin/master
 
       console.log('reprocessedJSON: ' + JSON.stringify(reprocessedJSON));
 
@@ -512,6 +529,7 @@
       var formRows = [];
       var schemaInputType = '';
       var formInputType = '';
+<<<<<<< HEAD
       var arrayKey = '';
 
 
@@ -555,11 +573,27 @@
         };
 
         schemaRows.required.push(arrayKey);
+=======
+      //console.log('$scope.field.len: ' + $scope.field.length);
+      for (var j = 0; j < $scope.field.length; j++) {
+        $scope.model[$scope.field[j].idVariabile] = 'N/A';
+        schemaInputType = schemaInputTypeMapping($scope.field[j].tipoVariabile.tipologia);
+
+        schemaRows.properties[$scope.field[j].idVariabile] = {type: schemaInputType,
+            title: formatIdVariabilezz($scope.field[j].idVariabile)
+        };
+
+        schemaRows.required.push($scope.field[j].idVariabile);
+>>>>>>> origin/master
 
         if($scope.field[j].tipoVariabile.tipologia === 'LISTA_VALORI' || $scope.field[j].tipoVariabile.tipologia === 'BOOLEANO'){
           formInputType = formInputTypeMapping($scope.field[j].tipoVariabile.tipologia);
           formRow = {
+<<<<<<< HEAD
             key: arrayKey,
+=======
+            key: $scope.field[j].idVariabile,
+>>>>>>> origin/master
             type: formInputType
           };
           if(formInputType === 'select'){
@@ -569,7 +603,11 @@
           }
           formRows.push(formRow);
         }else{
+<<<<<<< HEAD
           formRows.push(arrayKey);
+=======
+          formRows.push($scope.field[j].idVariabile);
+>>>>>>> origin/master
         }
 
       }
@@ -582,6 +620,7 @@
       //console.log('formRows: ' + JSON.stringify(formRows));
     }
 
+<<<<<<< HEAD
     $scope.schema = {
       "type": "object",
       "title": "Comment",
@@ -665,6 +704,9 @@
         "title": "OK"
       }
     ];
+=======
+    formInputSchema(reprocessedJSON);
+>>>>>>> origin/master
 
     /*$scope.schema = {
       type: "object",
@@ -802,12 +844,16 @@
       // First we broadcast an event so all fields validate themselves
       $scope.$broadcast('schemaFormValidate');
 
+<<<<<<< HEAD
       console.log('.... ' + $scope.model);
 
+=======
+>>>>>>> origin/master
       // Then we check if the form is valid
       if (form.$valid) {
         // ... do whatever you need to do with your data.
         alert('Perfecto!. Bravo!! Hai compilato bene!!!');
+<<<<<<< HEAD
         var objKeys = Object.keys($scope.model);
         console.log(objKeys);
         console.log($scope.keyPair);
@@ -820,6 +866,8 @@
 
         console.log($scope.model);
 
+=======
+>>>>>>> origin/master
       }
     };
 
@@ -832,7 +880,10 @@ angular.module('preventivitoreApp')
   .controller('LandingCtrl', LandingCtrl)
   .controller('ExampleCtrl', ExampleCtrl)
   .controller('FormController', FormController)
+<<<<<<< HEAD
   .controller('ProductListCtrl', ProductListCtrl)
+=======
+>>>>>>> origin/master
   .controller('AppCtrl', ['$scope', function ($scope) {
     $scope.stdFormTemplate = {
       "fieldset": {
