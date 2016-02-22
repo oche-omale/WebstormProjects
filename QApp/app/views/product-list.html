@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-2">
+  </div>
+  <div class="col-lg-8">
+    <div class="well bs-component">
+      <legend><span class="help-block">Kindly supply the details below. Fields marked with (*) are mandatory</span>
+      </legend>
+
+      <div class="form-group" ng-controller="ProductListCtrl">
+        <form class="form-horizontal">
+          <label for="product" class="control-label">Products </label>
+          <select class="form-control" id="product" ng-change="isSelectedProduct()" ng-model="product" ng-options="prod.value for prod in products">
+            <option value="">Select One</option>
+          </select>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
