@@ -15,6 +15,8 @@
  */
 (function() {
 
+  var reprocessedJSON = [];
+
   function MainCtrl(){
     this.awesomeThings = [
       'HTML5 Boilerplate',
@@ -272,12 +274,306 @@
     };
   }
 
+  function formatIdVariabilezz(s) {
+    return s.split(/(?=[A-Z])/).map(function(p) {
+      return p.charAt(0).toUpperCase() + p.slice(1);
+    }).join(' ');
+  }
+
+  function keyValuePairzz(key, value){
+    //console.log(key);
+    var pair = {};
+    var pairs = [];
+    //pair = {value:"", name:"Select One"};
+    //pairs.push(pair);
+    for(var i in key){
+      pair = {value:key[i], name:value[i]};
+      pairs.push(pair);
+
+    }
+    return pairs;
+  }
+
+  function getNestedChildrenzz(arr, head) {
+    var out = [];
+    var j = 0;
+    //var arrs = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'enteCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA','tipoVariabile':{'tipologia':'COMPLESSO','listaVariabili':[{'idVariabile':'carica','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['A','B','C','D','E','F','G','H'],'descr':['Dirigenti Tecnici/Dirigenti Legali iscritti allalbo speciale/Alte professionalit /collaudatore tecnico-amministrativo/commissario ad acta','Organo di vertice/Commissario straordinario/Amministratore Unico/Prefetto','Posizioni organizzative Tecniche/Rup tecnici/altri dipendenti tecnici e collaboratori tecnici in genere/Direttore Esecuzione Contratto','Altri organi/Tesoriere','Dirigenti Amministrativi/Attivit  specifiche/Rup non tecnico/Membri dellEsercito e Forze Armate/Componente Nucleo di Valutazione/Membri Organismo di vigilanza/componente Organismo Indipendente di Valutazione','Altri Amministratori/Assessori/Membri CdA','Posizioni Organizzative Amministrative e altri dipendenti amministrativi/Educatore/Coordinatore Serv.Personale','Componenti di altri organi collegiali e altre specifiche professionalitÃ ']},'help':null,'classeVariabile':null},{'idVariabile':'ente','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'],'descr':['Comuni/Unioni di Comuni/Associazioni di Comuni/ComunitÃ  montane','Province/CittÃ  metropolitane','Regioni','Ospedali/Case di ri/poso/Fondazioni ospedaliere','ASL/ASP_Azienda Sanitaria Provinciale/ARPA/IPAB','Camere di Commercio','AutoritÃ  Garante','Ministeri/Agenzia delle Entrate/Tribunale/Monopoli di Stato/Genio Civile/Forze Armate/Esercito/Marina Militare/Aifa/Miur/CRI/Cndcec/Anci/Inps/Inail/Altre Amministrazioni Statali','UniversitÃ /Istituti scolastici pubblici e scuole pubbliche in genere/ADISU','Porti AutoritÃ  Portuali','ASP-Azienda servizi alla persona/ATER/ALER/ATC/ACER','Consorzi Vari/Magistrato Acque/Parchi','AATO','Enti Strumentali (enti dotati e non dotati di personalitÃ  giuridica)/Farmacie/Aziende Speciali/AFOL','Organismi di Diritto Pubblico e SocietÃ  a partecipazione pubblica','Organismi di Diritto Pubblico e SocietÃ  a Partecipazione pubblica']},'help':null,'classeVariabile':null}]}},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
+    for(var i in arr) {
+      //console.log(arr[i].tipoVariabile);
+      //console.log(arr[i].tipoVariabile['tipoVariabile']);
+
+      //console.log(JSON.parse(Array.isArray(arr[i].tipoVariabile)))
+      if(typeof(arr[i].tipoVariabile['tipologia']) !== 'undefined' && arr[i].tipoVariabile['tipologia'] === 'LISTA') {
+        j++;
+        //console.log('1: ' + arr[i].tipoVariabile['tipologia']);
+        //console.log(arr[i].tipoVariabile['tipoVariabile'].listaVariabili);
+        //children = getNestedChildren(arr[i].tipoVariabile.tipoVariabile);
+
+        if(typeof(arr[i].tipoVariabile['tipoVariabile'].tipologia) !== 'undefined' && arr[i].tipoVariabile['tipoVariabile'].tipologia === 'COMPLESSO') {
+          //console.log('2: ' + arr[i].tipoVariabile['tipoVariabile'].tipologia);
+          if(typeof(arr[i].tipoVariabile['tipoVariabile'].listaVariabili) !== 'undefined') {
+            //console.log('3: ' + JSON.stringify(arr[i].tipoVariabile['tipoVariabile'].listaVariabili));
+            /*for (var x in arr[i].tipoVariabile['tipoVariabile'].listaVariabili) {
+              console.log('Recursive Point...: ' + JSON.stringify(x) + ', ' + JSON.stringify(arr[i].tipoVariabile['tipoVariabile'].listaVariabili[x]));
+              //getNestedChildrenzz(arr[i].tipoVariabile['tipoVariabile'].listaVariabili[x]);
+            }*/
+            getNestedChildrenzz(arr[i].tipoVariabile['tipoVariabile'].listaVariabili, arr[i].idVariabile);
+          }
+        }
+      }else{
+        if(head === null){
+          arr[i].rootHeader = arr[i].idVariabile;
+        }else{
+          arr[i].rootHeader = head;
+        }
+        reprocessedJSON.push(arr[i]);
+      }
+    }
+    //console.log('out: ' + JSON.stringify(reprocessedJSON));
+    //console.log(JSON.stringify(j));
+    //$scope.field = out;
+    //return reprocessedJSON;
+  }
+
+  function schemaInputTypeMapping(fieldLocal){
+
+    if(fieldLocal === 'LISTA_VALORI'){
+      return 'string'; //'select';
+    }else if(fieldLocal === 'INTEGER'){
+      return 'number';
+    }else if(fieldLocal === 'DATE'){
+      return 'date';
+    }else if(fieldLocal === 'BOOLEANO'){
+      return 'string'; //'radio';
+    }else {
+      return 'string';
+    }
+  }
+
+  function formInputTypeMapping(fieldLocal){
+
+    if(fieldLocal === 'LISTA_VALORI'){
+      return 'select';
+    }else if(fieldLocal === 'BOOLEANO'){
+      return 'radios';
+    }else {
+      return 'string';
+    }
+  }
+
+  function FormController($scope) {
+
+    reprocessedJSON = [];
+    $scope.model = {};
+
+    console.log('FormController');
+
+    var dat = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'enteCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA','tipoVariabile':{'tipologia':'COMPLESSO','listaVariabili':[{'idVariabile':'carica','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['A','B','C','D','E','F','G','H'],'descr':['Dirigenti Tecnici/Dirigenti Legali iscritti allalbo speciale/Alte professionalit /collaudatore tecnico-amministrativo/commissario ad acta','Organo di vertice/Commissario straordinario/Amministratore Unico/Prefetto','Posizioni organizzative Tecniche/Rup tecnici/altri dipendenti tecnici e collaboratori tecnici in genere/Direttore Esecuzione Contratto','Altri organi/Tesoriere','Dirigenti Amministrativi/Attivit  specifiche/Rup non tecnico/Membri dellEsercito e Forze Armate/Componente Nucleo di Valutazione/Membri Organismo di vigilanza/componente Organismo Indipendente di Valutazione','Altri Amministratori/Assessori/Membri CdA','Posizioni Organizzative Amministrative e altri dipendenti amministrativi/Educatore/Coordinatore Serv.Personale','Componenti di altri organi collegiali e altre specifiche professionalitÃ ']},'help':null,'classeVariabile':null},{'idVariabile':'ente','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'],'descr':['Comuni/Unioni di Comuni/Associazioni di Comuni/ComunitÃ  montane','Province/CittÃ  metropolitane','Regioni','Ospedali/Case di ri/poso/Fondazioni ospedaliere','ASL/ASP_Azienda Sanitaria Provinciale/ARPA/IPAB','Camere di Commercio','AutoritÃ  Garante','Ministeri/Agenzia delle Entrate/Tribunale/Monopoli di Stato/Genio Civile/Forze Armate/Esercito/Marina Militare/Aifa/Miur/CRI/Cndcec/Anci/Inps/Inail/Altre Amministrazioni Statali','UniversitÃ /Istituti scolastici pubblici e scuole pubbliche in genere/ADISU','Porti AutoritÃ  Portuali','ASP-Azienda servizi alla persona/ATER/ALER/ATC/ACER','Consorzi Vari/Magistrato Acque/Parchi','AATO','Enti Strumentali (enti dotati e non dotati di personalitÃ  giuridica)/Farmacie/Aziende Speciali/AFOL','Organismi di Diritto Pubblico e SocietÃ  a partecipazione pubblica','Organismi di Diritto Pubblico e SocietÃ  a Partecipazione pubblica']},'help':null,'classeVariabile':null}]}},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
+    //var dat = [{'idVariabile':'numeroCariche','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['1','2','3','4','5','6','7','8','9','10'],'descr':['1','2','3','4','5','6','7','8','9','10']},'help':null,'classeVariabile':null},{'idVariabile':'massimale','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['500000','1000000','1500000','2500000','5000000','7000000','10000000'],'descr':['500000','1000000','1500000','2500000','5000000','7000000','10000000']},'help':null,'classeVariabile':null},{'idVariabile':'sinistriPregressi','obbligatoria':false,'tipoVariabile':{'tipologia':'BOOLEANO'},'help':null,'classeVariabile':null},{'idVariabile':'dataDecorrenza','obbligatoria':false,'tipoVariabile':{'tipologia':'LISTA_VALORI','values':['31/12/2015','31/03/2016','30/06/2016'],'descr':['31/12/2015','31/03/2016','30/06/2016']},'help':null,'classeVariabile':null}];
+    getNestedChildrenzz(dat, null);
+    function formInputSchema(data) {
+
+      console.log('reprocessedJSON: ' + JSON.stringify(reprocessedJSON));
+
+      $scope.field = data;
+      //console.log('$scope.field: ' + JSON.stringify($scope.field));
+
+      var formRow = {};
+      var schemaRows = {type: "object", properties: {}, required: []};
+      var formRows = [];
+      var schemaInputType = '';
+      var formInputType = '';
+      //console.log('$scope.field.len: ' + $scope.field.length);
+      for (var j = 0; j < $scope.field.length; j++) {
+        $scope.model[$scope.field[j].idVariabile] = 'N/A';
+        schemaInputType = schemaInputTypeMapping($scope.field[j].tipoVariabile.tipologia);
+
+        schemaRows.properties[$scope.field[j].idVariabile] = {type: schemaInputType,
+            title: formatIdVariabilezz($scope.field[j].idVariabile)
+        };
+
+        schemaRows.required.push($scope.field[j].idVariabile);
+
+        if($scope.field[j].tipoVariabile.tipologia === 'LISTA_VALORI' || $scope.field[j].tipoVariabile.tipologia === 'BOOLEANO'){
+          formInputType = formInputTypeMapping($scope.field[j].tipoVariabile.tipologia);
+          formRow = {
+            key: $scope.field[j].idVariabile,
+            type: formInputType
+          };
+          if(formInputType === 'select'){
+              formRow.titleMap = keyValuePairzz($scope.field[j].tipoVariabile.values, $scope.field[j].tipoVariabile.descr);
+          }else if(formInputType === 'radios'){
+            formRow.titleMap = [{ value: "0", name: "No" }, { value: "1", name: "Yes" }];
+          }
+          formRows.push(formRow);
+        }else{
+          formRows.push($scope.field[j].idVariabile);
+        }
+
+      }
+      var submitBtn = {type: "submit", style: "btn-info",  title: "Calculate" };
+      formRows.push(submitBtn);
+
+      $scope.schema = schemaRows;
+      $scope.form = formRows;
+      //console.log('schemaRows: ' + JSON.stringify(schemaRows));
+      //console.log('formRows: ' + JSON.stringify(formRows));
+    }
+
+    formInputSchema(reprocessedJSON);
+
+    /*$scope.schema = {
+      type: "object",
+      properties: {
+        "name": {
+          type: "string",
+          title: "Name",
+          minLength: 2,
+          description: "Name or alias"
+        },
+        "title": {
+          type: "string",
+          title: "Title",
+          enum: ['Dr','Jr','Sir','Mrs','Mr','NaN','Dj','Prof']
+        },
+        "noenum": {
+          type: "string",
+          title: "Select Types"
+        },
+        "comment": {
+          "type": "string",
+          "title": "Comment",
+          "maxLength": 20,
+          "validationMessage": "Don't be greedy!",
+          "placeholder": "Make a comment"
+        },
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "pattern": "^\\S+@\\S+$",
+          "description": "Email will be used for evil.",
+          "validationMessage": "Invalid email"
+        },
+        "number": {
+          "type": "number",
+          "title": "Numbers",
+        },
+        "radios": {
+          "type": "string",
+          "title": "Basic radio button example",
+          "enum": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        "confirm": {
+            type: "boolean",
+            title: "Radio Boxes",
+            default: false
+        },
+        "birthDate": {
+          "type": "string",
+          "title": "Birthday",
+          "format": "date"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "comment"
+      ]
+    };
+
+    $scope.form = [
+      "name",
+      "title",
+      "email",
+      "number",
+      {
+        "key": "noenum",
+        "type": "select",
+        "titleMap": [
+          {
+            "value": "a",
+            "name": "A"
+          },
+          {
+            "value": "b",
+            "name": "B"
+          },
+          {
+            "value": "c",
+            "name": "C"
+          }
+        ]
+      },
+      {
+        "key": "comment",
+        "type": "textarea",
+        "placeholder": "Make a comment"
+      },
+      {
+        "key": "radios",
+        "type": "radios",
+        "titleMap": [
+          {
+            "value": "c",
+            "name": "C"
+          },
+          {
+            "value": "b",
+            "name": "B"
+          },
+          {
+            "value": "a",
+            "name": "A"
+          }
+        ]
+      },
+      {
+        key: "confirm",
+        type: "radios",
+        titleMap: [
+          { value: false, name: "No I don't understand these cryptic terms" },
+          { value: true, name: "Yes this makes perfect sense to me" }
+        ]
+      },
+      {
+        "key": "birthDate",
+        "minDate": "1995-09-01",
+        "maxDate": new Date(),
+        "format": "yyyy-mm-dd"
+      },
+      {
+        type: "submit",
+        style: "btn-info",
+        title: "Calculate"
+      }
+    ];*/
+
+
+
+    $scope.onSubmit = function(form) {
+      // First we broadcast an event so all fields validate themselves
+      $scope.$broadcast('schemaFormValidate');
+
+      // Then we check if the form is valid
+      if (form.$valid) {
+        // ... do whatever you need to do with your data.
+        alert('Perfecto!. Bravo!! Hai compilato bene!!!');
+      }
+    };
+
+  }
+
 angular.module('preventivitoreApp')
   .controller('MainCtrl', MainCtrl)
   .controller('AboutCtrl', AboutCtrl)
   .controller('ContactCtrl', ContactCtrl)
   .controller('LandingCtrl', LandingCtrl)
   .controller('ExampleCtrl', ExampleCtrl)
+  .controller('FormController', FormController)
   .controller('AppCtrl', ['$scope', function ($scope) {
     $scope.stdFormTemplate = {
       "fieldset": {

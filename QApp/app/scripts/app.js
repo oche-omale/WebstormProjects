@@ -20,7 +20,8 @@ angular
     'ui.router',
     'ng',
     'dynamic-form',
-    'dynform'
+    'dynform',
+    'schemaForm'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -63,6 +64,12 @@ $stateProvider
     templateUrl: 'views/dynamic-forms.html',
     controller: 'AppCtrl',
     controllerAs: 'app'
+  })
+  .state('schemaform', {
+    url: '/schema-form',
+    templateUrl: 'views/schema-form.html',
+    controller: 'FormController',
+    controllerAs: 'schema'
   });
 
   });
