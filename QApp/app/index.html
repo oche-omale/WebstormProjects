@@ -8,8 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-<<<<<<< HEAD
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -18,112 +17,8 @@
     <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css">
     <!-- endbuild -->
 
-=======
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css">
-    <!-- endbuild -->
-    <style>
-      .nav,
-      .pagination,
-      .carousel a {
-        cursor: pointer;
-      }
 
-      .fixed {
-        position: fixed;
-        margin: 0;
-      }
 
-      [ng-cloak] {
-        display: none;
-      }
-
-      div.fixed {
-        overflow-y: auto;
-        height: 100%;
-        margin-left: -15px;
-      }
-
-      pre {
-        margin: 1ex 0;
-      }
-
-      form,
-      ng-form {
-        border: 1px solid blue;
-        border-radius: 4px;
-        display: block;
-      }
-
-      fieldset {
-        border: 1px solid blue;
-        border-radius: 4px;
-        display: block;
-        padding: .35em .625em .75em;
-        margin: 0 2px;
-      }
-
-      legend {
-        font-weight: bold;
-      }
-
-      fieldset > legend:first-of-type {
-        border: none;
-        margin-bottom: auto;
-        width: inherit;
-        padding: inherit;
-        color: blue;
-      }
-
-      label,
-      span,
-      form > button,
-      ng-form > button,
-      form > input,
-      ng-form > input {
-        width: 48%;
-        padding: 1ex 1em;
-      }
-
-      label > input,
-      label > select,
-      label > textarea {
-        float: right;
-        width: 60%;
-      }
-
-      label div > label {
-        display: block;
-        padding: 1ex;
-        width: 100%;
-      }
-    </style>
-    <!--[if lte IE 8]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.1/json3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.3.0/es5-shim.min.js"></script>
-    <script>
-      document.createElement('ng-include');
-      document.createElement('ng-pluralize');
-      document.createElement('ng-view');
-      document.createElement('ng-form');
-      document.createElement('dynamic-form');
-
-      // Optionally these for CSS
-      document.createElement('ng:include');
-      document.createElement('ng:pluralize');
-      document.createElement('ng:view');
-      document.createElement('ng:form');
-
-      $(document).ready(function() {
-        angular.bootstrap(document.documentElement);
-      });
-    </script>
-    <![endif]-->
->>>>>>> origin/master
   </head>
   <body ng-app="preventivitoreApp">
     <!--[if lte IE 8]>
@@ -131,11 +26,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-<<<<<<< HEAD
+
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="#" class="navbar-brand">QApp</a>
+          <a ui-sref="schemaform" class="navbar-brand">QApp</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -144,9 +39,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-            <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
-            <li ui-sref-active="active"><a ui-sref="landing">Questionario</a></li>
-            <li ui-sref-active="active"><a ui-sref="schemaform">Schema Form</a></li>
+            <li ui-sref-active="active"><a ui-sref="schemaform">Questionario</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -167,67 +60,16 @@
     <div class="container">
       <div class="row">
         <div ui-view=""></div>
-=======
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">QuestionarioApp</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li ui-sref-active="active"><a ui-sref="main">Home</a></li>
-              <li ui-sref-active="active"><a ui-sref="landing">Questionario</a></li>
-              <li ui-sref-active="active"><a ui-sref="dynamic">Dynamic Form</a></li>
-              <li ui-sref-active="active"><a ui-sref="dynamicforms">Dynamic Forms</a></li>
-              <li ui-sref-active="active"><a ui-sref="schemaform">Schema Form</a></li>
-              <li ui-sref-active="active"><a ui-sref="about">About</a></li>
-              <li ui-sref-active="active"><a ui-sref="contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
->>>>>>> origin/master
       </div>
     </div>
 
-    <div class="container">
-<<<<<<< HEAD
-    <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="list-unstyled">
-            <li>&copy; XTPHERE</li>
-          </ul>
-
-        </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy; XTPHERE 2016</p>
       </div>
     </footer>
-    </div>
 
 
-
-=======
-    <div ui-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span>Powered By XTPHERE</p>
-      </div>
-    </div>
-
-
->>>>>>> origin/master
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -251,7 +93,6 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -261,19 +102,15 @@
         <script type="text/javascript" src="bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
         <script type="text/javascript" src="bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
         <script type="text/javascript" src="bower_components/pickadate/lib/picker.js"></script>
-<<<<<<< HEAD
+        <script type="text/javascript" src="bower_components/pickadate/lib/picker.js"></script>
+        <script src="/bower_components/a0-angular-storage/dist/angular-storage.js"></script>
         <script src="scripts/custom.js"></script>
-=======
->>>>>>> origin/master
-        <script src="scripts/angulardynamicform.js"></script>
-        <script src="scripts/dynamic-forms.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers.js"></script>
+        <script src="scripts/constants.js"></script>
         <script src="scripts/services.js"></script>
-<<<<<<< HEAD
-    <!-- endbuild -->
-=======
-        <!-- endbuild -->
->>>>>>> origin/master
+        <script src="scripts/FileSaver.js"></script>
+        <script src="bower_components/jquery-file-download/src/Scripts/jquery.fileDownload.js"></script>    <!-- endbuild -->
+
 </body>
 </html>

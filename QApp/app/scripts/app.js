@@ -18,15 +18,13 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ng',
-    'dynamic-form',
-    'dynform',
-    'schemaForm'
+    'schemaForm',
+    'angular-storage'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
 
-$urlRouterProvider.otherwise('/landing');
+$urlRouterProvider.otherwise('/schemaform');
 
 $stateProvider
   .state('main', {
@@ -70,6 +68,12 @@ $stateProvider
     templateUrl: 'views/schema-form.html',
     controller: 'FormController',
     controllerAs: 'schema'
+  })
+  .state('productlist', {
+    url: '/product-list',
+    templateUrl: 'views/product-list.html',
+    controller: 'ProductCalculationCtrl',
+    controllerAs: 'product'
   });
 
   });

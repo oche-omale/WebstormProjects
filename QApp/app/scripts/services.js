@@ -5,41 +5,58 @@
 
 (function() {
 
-  function QuestionarioService($http) {
+  function QuestionarioService($http, store, BACKEND_SERVICE_URLS) {
 
-<<<<<<< HEAD
     var getProductList = function() {
-      return $http.get('http://192.168.190.70:8085/AceRate-Rest-Services/webresources/services/getProductNames').then(function(response) {
-=======
-    var getQuestionarioParameters = function() {
-      return $http.get('http://192.168.190.70:8085/AceRate-Rest-Services/webresources/services/getDizionarioDati/RCPATDIP/1455871541523').then(function(response) {
->>>>>>> origin/master
-        //console.log(JSON.stringify(response));
+      return $http.get(BACKEND_SERVICE_URLS.PRODUCT_LIST).then(function(response) {
         return response.data;
       });
     };
 
-<<<<<<< HEAD
     var getProductParameterList = function() {
-      return $http.get('http://192.168.190.70:8085/AceRate-Rest-Services/webresources/services/getDizionarioDati/RCPATDIP/1456140657986').then(function(response) {
+      return $http.get(BACKEND_SERVICE_URLS.PRODUCT_PARAMETERS + getCurrentTimeMills()).then(function(response) {
         return response.data;
       });
     };
 
+    var getProductCalculation = function(data) {
+      return $http({
+        url: BACKEND_SERVICE_URLS.PRODUCT_CALCULATION,
+        method: 'POST',
+        data: JSON.stringify(data),
+        headers: {'Content-Type': 'application/json'}
+      }).then(function(response) {
+        return response.data;
+      });
+    };
 
+    var getCurrentTimeMills = function(){
+      return new Date().getTime();
+    };
+
+    var setProductParameter = function(data){
+      store.set(BACKEND_SERVICE_URLS.PRODUCT, data);
+    };
+
+    var getProductParameter = function(){
+      return store.get(BACKEND_SERVICE_URLS.PRODUCT);
+    };
+
+    var removeProductParameter = function(){
+      store.remove(BACKEND_SERVICE_URLS.PRODUCT);
+    };
 
     return {
       getProductList: getProductList,
-      getProductParameterList: getProductParameterList
-=======
-    return {
-      getQuestionarioParameters: getQuestionarioParameters
->>>>>>> origin/master
+      getProductParameterList: getProductParameterList,
+      getProductCalculation: getProductCalculation,
+      getCurrentTimeMills: getCurrentTimeMills,
+      setProductParameter: setProductParameter,
+      getProductParameter: getProductParameter,
+      removeProductParameter: removeProductParameter
     };
 
   }
-
-
 
   angular.module('preventivitoreApp')
     .factory('QuestionarioService', QuestionarioService);
