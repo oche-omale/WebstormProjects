@@ -24,7 +24,7 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
 
 
-$urlRouterProvider.otherwise('/schemaform');
+$urlRouterProvider.otherwise('/questionario/questionario-form/0');
 
 $stateProvider
   .state('main', {
@@ -63,19 +63,34 @@ $stateProvider
     controller: 'AppCtrl',
     controllerAs: 'app'
   })
-  .state('schemaform', {
-    url: '/schema-form',
+  .state('questionario', {
+    abstract: true,
+    url: '/questionario',
+    templateUrl: 'views/questionario-template.html'
+  })
+  .state('questionario.form', {
+    url: '/questionario-form/:routeId',
     templateUrl: 'views/schema-form.html',
     controller: 'FormController',
     controllerAs: 'schema'
   })
-  .state('productlist', {
-    url: '/product-list',
+  .state('questionario.risultato', {
+    url: '/questionario-risultato',
     templateUrl: 'views/product-list.html',
     controller: 'ProductCalculationCtrl',
     controllerAs: 'product'
   });
 
+  }).run(function($rootScope, $state){
+    $rootScope.$state = $state;
+
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      //console.log(fromState);
+      $rootScope.tostateUrl = fromState.name;
+      //$state.go(fromParams.url);
+
+    });
   });
 
 }());

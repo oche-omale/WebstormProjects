@@ -5,7 +5,10 @@
 
 (function() {
 
-  function QuestionarioService($http, store, BACKEND_SERVICE_URLS) {
+  function QuestionarioService($http, store, BACKEND_SERVICE_URLS, LOCAL_STORAGE_VALUE) {
+    var form = [];
+    var schema = {};
+    var model = {};
 
     var getProductList = function() {
       return $http.get(BACKEND_SERVICE_URLS.PRODUCT_LIST).then(function(response) {
@@ -35,15 +38,50 @@
     };
 
     var setProductParameter = function(data){
-      store.set(BACKEND_SERVICE_URLS.PRODUCT, data);
+      //store.set(LOCAL_STORAGE_VALUE.PRODUCT, data);
+
     };
 
     var getProductParameter = function(){
-      return store.get(BACKEND_SERVICE_URLS.PRODUCT);
+      return store.get(LOCAL_STORAGE_VALUE.PRODUCT);
     };
 
     var removeProductParameter = function(){
-      store.remove(BACKEND_SERVICE_URLS.PRODUCT);
+      store.remove(LOCAL_STORAGE_VALUE.PRODUCT);
+    };
+
+    var set = function(key, data){
+      store.set(key, data);
+    };
+
+    var get = function(key){
+      return store.get(key);
+    };
+
+    var setModel = function(data){
+      model = data;
+    };
+
+    var getModel = function(){
+      return model;
+    };
+    var setForm = function(data){
+      form = data;
+    };
+
+    var getForm = function(){
+      return form;
+    };
+    var setSchema = function(data){
+      schema = data;
+    };
+
+    var getSchema = function(){
+      return schema;
+    };
+
+    var remove = function(key){
+      store.remove(key);
     };
 
     return {
@@ -53,7 +91,16 @@
       getCurrentTimeMills: getCurrentTimeMills,
       setProductParameter: setProductParameter,
       getProductParameter: getProductParameter,
-      removeProductParameter: removeProductParameter
+      removeProductParameter: removeProductParameter,
+      set: set,
+      get: get,
+      remove: remove,
+      setModel: setModel,
+      getModel: getModel,
+      setForm: setForm,
+      getForm: getForm,
+      setSchema: setSchema,
+      getSchema: getSchema
     };
 
   }

@@ -384,7 +384,6 @@
   }
 
   function ProductCalculationCtrl($scope, QuestionarioService,$http) {
-
     $scope.products = [];
     $scope.customError = false;
     $scope.q = {inputJson: { massimale:'5000000', numeroCariche: '2',
@@ -473,13 +472,16 @@
 
     function getProducts(questionario) {
       QuestionarioService.getProductCalculation(questionario).then(onSuccess, onError);
-    };
+    }
 
     getProducts(inputJson);
   }
 
-  function FormController($scope, $state, QuestionarioService) {
+  function FormController($scope, $state, QuestionarioService, $stateParams, LOCAL_STORAGE_VALUE) {
+    console.log('FormController');
     reprocessedJSON = [];
+    $scope.schema = {};
+    $scope.form = {};
     $scope.model = {};
     $scope.product = {};
     $scope.productList = [];
@@ -489,13 +491,16 @@
     $scope.keyPair = [];
 
     var onSuccess = function(data){
+
       reprocessedJSON = [];
-      getNestedChildrenzz(data, null);
-      formInputProductDetails(reprocessedJSON, $scope.productList);
+
+        getNestedChildrenzz(data, null);
+        formInputProductDetails(reprocessedJSON, $scope.productList);
+
     };
 
     var onProductLoadSuccess = function(data){
-      formInputProductList(data);
+        formInputProductList(data);
     };
 
     var onError = function(reason){
@@ -507,7 +512,25 @@
     }
 
     function loadProductList(){
-      QuestionarioService.getProductList().then(onProductLoadSuccess, onError);
+      //console.log($stateParams.routeId);
+      if($stateParams.routeId === '0'){
+        $scope.schema = {};
+        $scope.form = {};
+        $scope.model ={};
+        QuestionarioService.getProductList().then(onProductLoadSuccess, onError);
+      }else{
+        $scope.model = QuestionarioService.getModel();
+        $scope.schema = QuestionarioService.getSchema();
+        $scope.form = QuestionarioService.getForm();
+        console.log('2 else: $scope.model', $scope.model);
+        //$scope.schema.tariffa = $scope.model.tariffa;
+        //$scope.form.tariffa = $scope.model.tariffa;
+
+        $scope.$broadcast('schemaFormRedraw');
+        console.log('3 else: $scope.form', $scope.form);
+        console.log('4 else: $scope.schema', $scope.schema);
+
+      }
     }
 
     //loadProductListFields();
@@ -516,6 +539,7 @@
 
 
     function formInputProductList(data) {
+      console.log('formInputProductList');
 
       $scope.productList = data;
 
@@ -532,9 +556,10 @@
       schemaRows.required.push("tariffa");
 
       formRow = {key: "tariffa", type: formInputType, onChange: function(modelValue, form) {
-            $scope.form.pop();
-            $scope.$broadcast('schemaFormRedraw');
+            //$scope.form.pop();
+            console.log('1st selected: ', modelValue);
             loadProductListFields();
+            //$scope.$broadcast('schemaFormRedraw');
           }
       };
 
@@ -550,6 +575,7 @@
     }
 
     function formInputProductDetails(data, products) {
+      console.log('formInputProductDetails');
 
       $scope.field = data;
 
@@ -577,7 +603,22 @@
 
       schemaRows.required.push("tariffa");
 
-      formRow = {key: "tariffa", type: formInputTypex};
+      formRow = {key: "tariffa", type: formInputTypex , onChange: function(modelValue, form) {
+        //$scope.form.pop();
+        console.log('2nd selected:1: ', JSON.stringify(form));
+        console.log('2nd selected:1: $scope.form', JSON.stringify($scope.form));
+        //$scope.model = {};
+        $scope.model = {tariffa: modelValue};
+        $scope.form = form;//angular.copy(form);
+        console.log('2nd selected:2: $scope.form', JSON.stringify($scope.form));
+        //$scope.$broadcast('schemaFormRedraw');
+        loadProductListFields();
+
+        console.log('2nd selected: form: ', JSON.stringify(form));
+        console.log('2nd selected::3 $scope.form', JSON.stringify($scope.form));
+
+        //$scope.$broadcast('schemaFormRedraw');
+      }};xt
 
       if(formInputTypex === 'select'){
         formRow.titleMap = keyValuePairzz(products, products);
@@ -704,6 +745,7 @@
       formRows.push(submitBtn);
 
       $scope.schema = schemaRows;
+      //$scope.form = angular.copy(formRows);
       $scope.form = formRows;
 
     }
@@ -955,7 +997,7 @@
       }
     ];*/
 
-    $scope.model = {};
+
 
     $scope.onSubmit = function(form) {
       // First we broadcast an event so all fields validate themselves
@@ -964,8 +1006,15 @@
       // Then we check if the form is valid
       if (form.$valid) {
 
+        QuestionarioService.setSchema($scope.schema);
+        QuestionarioService.setModel($scope.model);
+        QuestionarioService.setForm($scope.form);
+
         QuestionarioService.setProductParameter($scope.model);
-        $state.go('productlist');
+        console.log('3 onSubmit: $scope.model', $scope.model);
+        console.log('3 onSubmit: $scope.form', $scope.form);
+        console.log('4 onSubmit: $scope.schema', $scope.schema);
+        $state.go('questionario.risultato');
 
 
 
