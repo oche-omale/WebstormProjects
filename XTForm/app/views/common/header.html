@@ -1,0 +1,37 @@
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="common.main">XTphere AngularJS Starter Template</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="common.main"><a ui-sref="common.main">{{'HOME' | translate}}</a></li>
+        <li ui-sref-active="common.about"><a ui-sref="common.about">{{'ABOUT' | translate}}</a></li>
+        <li ui-sref-active="common.contact"><a ui-sref="common.contact">{{'CONTACT' | translate}}</a></li>
+        <li ui-sref-active="common.gridtable"><a ui-sref="common.gridtable">{{'GRID_TABLE' | translate}}</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" ng-controller="LanguageCtrl as lang">
+          <a class="dropdown-toggle" data-toggle="dropdown" id="themes">{{lang.describeLanguage}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="themes">
+            <li><a ng-click="lang.changeLanguage('en')">{{'ENGLISH' | translate}}</a></li>
+            <li><a ng-click="lang.changeLanguage('it')">{{'ITALIAN' | translate}}</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

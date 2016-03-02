@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/data/app.config.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/data/data.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/constants.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/grid-directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/translations.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/xt.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/about.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/common/content.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/footer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/header.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/spacer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/templates/as_table.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/templates/editor.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/common/templates/editor_initializer.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/contact.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/grid-table.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/main.html" charset="UTF-8" />
   </component>
 </project>
